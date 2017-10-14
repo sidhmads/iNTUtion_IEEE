@@ -1,12 +1,21 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 
-const Button = () => {
-  return (
-    <TouchableOpacity>
-      <Text> Click Me!!!! </Text>
-    </TouchableOpacity>
-  );
-};
+export default class Button extends React.Component {
 
-export default Button;
+  linker(comp) {
+  //  alert('hi');
+  this.props.navigation.navigate(comp);
+  }
+  render() {
+    return (
+
+      <TouchableHighlight onPress={this.linker.bind(this, 'List')}>
+      <TouchableOpacity>
+        <Text> Click Me!!!! </Text>
+      </TouchableOpacity>
+      </TouchableHighlight>
+
+    );
+  }
+}
