@@ -31,27 +31,40 @@ const options = {
 };
 
 class TransactionForm extends Component {
+  state = { value: [] };
+  getInitialState() {
+      return { value: null };
+    }
+
+    onChange(value) {
+      this.setState({ value });
+    }
 
   onPress() {
-    // call getValue() to get the values of the form
-    const value = this.refs.form.getValue();
-    if (value) { // if validation fails, value will be null
-      console.log(value.Date);
-      axios({
-        method: 'post',
-        url: 'https://glacial-spire-93148.herokuapp.com/transactions/addTransaction',
-        data: {
-          date: value.Date,
-          amount: value.Amount,
-          nameOfParty: value.Name_of_party,
-          summary: value.Summary,
-          modeOfPayment: value.Mode_of_payment,
-          uniqueId: '1'
-        }
-      }).then(response => { console.log(response); })
-      .catch(e => { console.log(e); });
+  // call getValue() to get the values of the form
+  const value = this.refs.form.getValue();
+  if (value) { // if validation fails, value will be null
+    console.log(value.Date);
+    axios({
+      method: 'post',
+      url: 'https://glacial-spire-93148.herokuapp.com/transactions/addTransaction',
+      data: {
+        date: value.Date,
+        amount: value.Amount,
+        nameOfParty: value.Name_of_party,
+        summary: value.Summary,
+        modeOfPayment: value.Mode_of_payment,
+        uniqueId: '1'
+      }
+    }).then(response => { this.clearForm(); console.log(response); })
+    .catch(e => { console.log(e); });
+    }
   }
-}
+
+  clearForm() {
+    // clear content from all textbox
+    this.setState({ value: null });
+  }
 
   render() {
     return (
@@ -60,7 +73,8 @@ class TransactionForm extends Component {
         <Form
           ref="form"
           type={Transaction}
-          options={options}
+          value={this.state.value}
+          onChange={this.onChange.bind(this)}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress.bind(this)} underlayColor='#99d9f4'>
           <Text style={styles.buttonText}>Save</Text>
