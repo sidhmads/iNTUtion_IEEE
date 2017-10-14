@@ -17,7 +17,18 @@ const Transaction = t.struct({
   Mode_of_payment: t.maybe(t.String),  // an optional string
 });
 
-const options = {};
+const options = {
+  fields: {
+    Date: {
+      config: {
+        format: (date) => {
+          const formatedDate = moment(date).format('DD.MM.YYYY');
+          return formatedDate;
+        },
+      },
+    },
+  }
+};
 
 class TransactionForm extends Component {
 
@@ -51,8 +62,9 @@ class TransactionForm extends Component {
           type={Transaction}
           options={options}
         />
-        <TouchableHighlight style={styles.button} onPress={this.onPress.bind(this)} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+        <TouchableHighlight style={styles.button} onPress={this.onPress.bind(this)}
+        underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
       </View>
     );
