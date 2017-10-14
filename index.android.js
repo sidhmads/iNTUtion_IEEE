@@ -8,11 +8,12 @@ import TransactionForm from './src/components/TransactionForm';
 import List from './src/components/List';
 import AddBudget from './src/components/AddBudget';
 import PieCharts from './src/components/PieChart';
+import CameraApp from './src/components/CameraOCR';
 // create a Component
 const App = () => (
   <View style={{ flex: 1 }}>
     <Header headerText={'Anex!'} />
-    <PieCharts />
+    <CameraApp />
   </View>
   );
 // render it to the device
