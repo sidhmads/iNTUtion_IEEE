@@ -17,7 +17,18 @@ const Transaction = t.struct({
   Mode_of_payment: t.maybe(t.String),  // an optional string
 });
 
-const options = {};
+const options = {
+  fields: {
+    Date: {
+      config: {
+        format: (date) => {
+          const formatedDate = moment(date).format('DD.MM.YYYY');
+          return formatedDate;
+        },
+      },
+    },
+  }
+};
 
 class TransactionForm extends Component {
 
@@ -35,7 +46,7 @@ class TransactionForm extends Component {
           nameOfParty: value.Name_of_party,
           summary: value.Summary,
           modeOfPayment: value.Mode_of_payment,
-          uniqueId: 1
+          uniqueId: '1'
         }
       }).then(response => { console.log(response); })
       .catch(e => { console.log(e); });

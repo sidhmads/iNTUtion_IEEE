@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import moment from 'moment';
+import { Text, View } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 
@@ -7,15 +8,14 @@ const MoneyDetail = (props) => {
   return (
     <Card>
       <CardSection>
-        <View>
-          <Image
-            style={styles.thumbnailStyle}
-            source={{ uri: props.detail.thumbnail_image }}
-          />
-        </View>
-        <View style={styles.leftContentStyle}>
-        <Text style={styles.amountStyle}>{props.detail.title}</Text>
-        <Text>{props.detail.artist}</Text>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View style={styles.leftContentStyle}>
+            {props.detail.nameOfParty ? <Text style={styles.nameStyle}>{props.detail.nameOfParty}</Text> : <Text style={styles.nameStyle}>Not Available</Text>}
+            <Text>{props.detail.date.toString().substring(0, 10)}</Text>
+          </View>
+          <View style={styles.rightStyle}>
+            <Text style={styles.amountStyle}>${(props.detail.amount).toFixed(2)}</Text>
+          </View>
         </View>
       </CardSection>
     </Card>
@@ -26,14 +26,18 @@ const styles = {
   leftContentStyle: {
     flexDirection: 'column',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   },
-  thumbnailStyle: {
-    height: 50,
-    width: 50
+  rightStyle: {
+    paddingRight: 25,
+    alignItems: 'center',
+  },
+  nameStyle: {
+    fontSize: 20,
+    fontWeight: '600'
   },
   amountStyle: {
-    fontSize: 18
+    fontSize: 25
   },
 };
 
