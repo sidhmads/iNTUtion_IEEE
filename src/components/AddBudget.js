@@ -1,36 +1,25 @@
 'use strict';
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
-import moment from 'moment';
 import t from 'tcomb-form-native';
 import axios from 'axios';
 
 const Form = t.form.Form;
 
-
-// here we are: define your domain model
-const Transaction = t.struct({
-  Date: t.Date,              // a required string
-  Amount: t.Number,
-  Name_of_party: t.maybe(t.String),  // an optional string
-  Summary: t.maybe(t.String),  // an optional string
-  Mode_of_payment: t.maybe(t.String),  // an optional string
+let Month = t.refinement(t.Number, function (n) {
+  return n >= 1 && n < 13;
 });
 
-const options = {
-  fields: {
-    Date: {
-      config: {
-        format: (date) => {
-          const formatedDate = moment(date).format('DD.MM.YYYY');
-          return formatedDate;
-        },
-      },
-    },
-  }
-};
 
-class TransactionForm extends Component {
+// here we are: define your domain model
+const Budget = t.struct({
+  Month: Month,
+  Amount_per_month: t.Number,
+});
+
+const options = {};
+
+class AddBudget extends Component {
   state = { value: [] };
   getInitialState() {
       return { value: null };
@@ -47,13 +36,10 @@ class TransactionForm extends Component {
     console.log(value.Date);
     axios({
       method: 'post',
-      url: 'https://glacial-spire-93148.herokuapp.com/transactions/addTransaction',
+      url: 'https://glacial-spire-93148.herokuapp.com/budgets/addBudget',
       data: {
         date: value.Date,
         amount: value.Amount,
-        nameOfParty: value.Name_of_party,
-        summary: value.Summary,
-        modeOfPayment: value.Mode_of_payment,
         uniqueId: '1'
       }
     }).then(response => { this.clearForm(); console.log(response); })
@@ -72,13 +58,12 @@ class TransactionForm extends Component {
         {/* display */}
         <Form
           ref="form"
-          type={Transaction}
+          type={Budget}
           value={this.state.value}
           onChange={this.onChange.bind(this)}
           options={options}
         />
-        <TouchableHighlight style={styles.button} onPress={this.onPress.bind(this)}
-        underlayColor='#99d9f4'>
+        <TouchableHighlight style={styles.button} onPress={this.onPress.bind(this)} underlayColor='#99d9f4'>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
       </View>
@@ -115,4 +100,4 @@ const styles = {
   }
 };
 
-export default TransactionForm;
+export default AddBudget;
