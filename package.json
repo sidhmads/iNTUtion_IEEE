@@ -16,6 +16,8 @@
 		"react-moment": "^0.6.5",
 		"react-native": "0.47.0",
 		"react-native-facebook-login": "^1.6.0",
+		"react-native-modal-dropdown": "^0.5.0",
+		"react-native-pie-chart": "^1.0.12",
 		"react-native-router-flux": "^4.0.0-beta.22",
 		"tcomb-form-native": "^0.6.10"
 	},

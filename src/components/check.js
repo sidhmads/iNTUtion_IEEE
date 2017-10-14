@@ -1,7 +1,7 @@
 //Index.android.js - place code in here for android
 
 // import a library to help create a library
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import Header from './Header';
 import Button from './Button'
@@ -10,7 +10,7 @@ import List from './List';
 // create a Component
 
 
-export default class check extends React.Component {
+export default class check extends Component {
 
   linker(comp) {
   //  alert('hi');
@@ -24,7 +24,7 @@ export default class check extends React.Component {
 
           <TouchableHighlight onPress={this.linker.bind(this, 'List')}>
         <Text> does it ? </Text>
-  
+
           </TouchableHighlight>
       </View>
     );

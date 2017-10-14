@@ -6,11 +6,13 @@ import { AppRegistry, View } from 'react-native';
 import Header from './src/components/Header';
 import TransactionForm from './src/components/TransactionForm';
 import List from './src/components/List';
+import AddBudget from './src/components/AddBudget';
+import PieCharts from './src/components/PieChart';
 // create a Component
 const App = () => (
   <View style={{ flex: 1 }}>
     <Header headerText={'Anex!'} />
-    <List />
+    <PieCharts />
   </View>
   );
 // render it to the device
