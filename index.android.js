@@ -4,14 +4,12 @@
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/Header';
-import Button from './src/components/Button';
-import List from './src/components/List';
+import TransactionForm from './src/components/TransactionForm';
 // create a Component
 const App = () => (
-  <View>
+  <View style={{ flex: 1 }}>
     <Header headerText={'Anex!'} />
-    <List />
-    <Button />
+    <TransactionForm />
   </View>
   );
 // render it to the device

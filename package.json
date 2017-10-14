@@ -8,10 +8,16 @@
 	},
 	"dependencies": {
 		"axios": "^0.16.2",
+		"es6-promise": "^4.1.1",
+		"isomorphic-fetch": "^2.2.1",
+		"moment": "^2.19.1",
+		"prop-types": "^15.6.0",
 		"react": "16.0.0-alpha.12",
+		"react-moment": "^0.6.5",
 		"react-native": "0.47.0",
-		"react-native-router-flux": "^3.35.0",
-		"react-navigation": "^1.0.0-beta.13"
+		"react-native-facebook-login": "^1.6.0",
+		"react-native-router-flux": "^4.0.0-beta.22",
+		"tcomb-form-native": "^0.6.10"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
