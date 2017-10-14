@@ -9,6 +9,7 @@ import Button from './src/components/Button';
 import List from './src/components/List';
 import check from './src/components/check';
 import TransactionForm from './src/components/TransactionForm';
+import HomePageForm from './src/components/HomePageForm';
 
 // create a Component
 /*const App = () => (
@@ -25,6 +26,7 @@ AppRegistry.registerComponent('albums', () => App);
 */
 const albums = StackNavigator({
 
+    HomePageForm: { screen: HomePageForm },
     TransactionForm: { screen: TransactionForm },
     Check: { screen: check },
     List: { screen: List },
