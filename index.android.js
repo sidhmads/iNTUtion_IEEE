@@ -11,6 +11,7 @@ const App = () => (
   <View>
     <Header headerText={'Anex!'} />
     <List />
+    <Button />
   </View>
   );
 // render it to the device
