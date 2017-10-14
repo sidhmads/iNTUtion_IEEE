@@ -46,7 +46,7 @@ class TransactionForm extends Component {
           nameOfParty: value.Name_of_party,
           summary: value.Summary,
           modeOfPayment: value.Mode_of_payment,
-          uniqueId: 1
+          uniqueId: '1'
         }
       }).then(response => { console.log(response); })
       .catch(e => { console.log(e); });

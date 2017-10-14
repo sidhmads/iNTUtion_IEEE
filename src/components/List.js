@@ -7,21 +7,20 @@ import Button from './Button';
 class List extends Component {
   state = { details: [] };
   componentWillMount() {
-    axios.get('https://rallycoding.herokuapp.com/api/music_albums')
+    axios.get('https://glacial-spire-93148.herokuapp.com/transactions/getTransactions/1')
       .then(response => this.setState({ details: response.data }));
   }
 
   renderDetails() {
     console.log(this.state);
     return this.state.details.map(detail =>
-      <MoneyDetail key={detail.title} detail={detail} />
+      <MoneyDetail key={detail.id} detail={detail} />
     );
   }
   render() {
   return (
       <ScrollView>
         {this.renderDetails()}
-        <Button> Buy Now </Button>
       </ScrollView>
     );
   }
