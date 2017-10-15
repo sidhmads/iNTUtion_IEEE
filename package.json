@@ -15,11 +15,9 @@
 		"react": "16.0.0-alpha.12",
 		"react-moment": "^0.6.5",
 		"react-native": "0.47.0",
-<<<<<<< HEAD
-		"react-native-fab": "^1.0.6",
-=======
+
 		"react-native-camera": "^0.10.0",
->>>>>>> 5310a46ee0247783f69d8c9318d7af7d4d4962de
+
 		"react-native-facebook-login": "^1.6.0",
 		"react-native-modal-dropdown": "^0.5.0",
 		"react-native-pie-chart": "^1.0.12",
